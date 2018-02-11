@@ -1,6 +1,7 @@
 package com.admxj.mysql;
 
 
+import com.admxj.domain.Table;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import org.junit.Test;
 
@@ -20,7 +21,7 @@ public class MysqlTest {
 
 
         try {
-            List<String> list = mysqlDB.selectTables();
+            List<Table> list = mysqlDB.select();
             System.out.println(list);
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
