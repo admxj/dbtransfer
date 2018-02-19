@@ -13,6 +13,7 @@ public abstract class DBGenerator {
 
     protected Connection connection = null;
 
+
     public DBGenerator(DataSource dataSource) {
         try {
             connection = dataSource.getConnection();

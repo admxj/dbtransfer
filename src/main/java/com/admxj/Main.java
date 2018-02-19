@@ -1,7 +1,9 @@
 package com.admxj;
 
+import com.admxj.mysql.MysqlDB;
 import com.admxj.sqlite.SQLite;
 import com.admxj.domain.Table;
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import org.sqlite.SQLiteDataSource;
 
 import java.sql.SQLException;
@@ -14,7 +16,14 @@ public class Main {
         sqLiteDataSource.setUrl("jdbc:sqlite:/Users/admxj/Administrative-divisions-of-China/dist/data.sqlite");
         SQLite sqLite = new SQLite(sqLiteDataSource);
         List<Table> select = sqLite.select();
-        System.out.println();
+
+
+        MysqlDataSource mysqlDataSource = new MysqlDataSource();
+        mysqlDataSource.setURL("jdbc:mysql://localhost:3306/demo");
+        mysqlDataSource.setUser("root");
+        mysqlDataSource.setPassword("123456");
+        MysqlDB mysqlDB = new MysqlDB(mysqlDataSource);
+        mysqlDB.createTable(select);
 
     }
 
